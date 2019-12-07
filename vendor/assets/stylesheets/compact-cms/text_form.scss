@@ -1,0 +1,13 @@
+.site-content-elements {
+  article.text-site-content-form {
+    trix-editor {
+      color: inherit;
+    }
+  }
+  form.site-content-text-form.full-width {
+    width: calc(100% + 20px * 2);
+    margin: 0;
+    margin-left: -20px;
+    margin-right: -20px;
+  }
+}

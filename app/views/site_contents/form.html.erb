@@ -1,0 +1,23 @@
+<% if @site_content.type == 'text' %>
+  <%= form_for @site_content, html: { class: 'site-content-form site-content-text-form full-width general' } do |f| %>
+    <%= f.trix_editor :text %>
+    <%= f.hidden_field :site %>
+    <%= f.hidden_field :type %>
+    <div class="buttons">
+      <%= f.submit 'save', class: 'alone' %>
+      <%= delete_button(@site_content) unless @site_content.new_record? %>
+    </div>
+  <% end %>
+<% elsif @site_content.type == 'image' %>
+  <%= form_for @site_content, html: { class: 'site-content-form site-content-image-form general' } do |f| %>
+    <%= f.text_field :text %>
+    <%= allFormFields f, f.object, SiteContent::Fields::IMAGE_FORM_FIELDS %>
+    <%= f.hidden_field :site %>
+    <%= f.hidden_field :type %>
+    <%= f.hidden_field :parent_id %>
+    <%= f.hidden_field :parent_type %>
+    <div class="buttons">
+      <%= f.submit 'save', class: 'alone' %>
+    </div>
+  <% end %>
+<% end %>

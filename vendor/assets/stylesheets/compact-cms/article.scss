@@ -1,0 +1,32 @@
+.site-content-elements article {
+  display: flex;
+  h2 { margin: 1em 0 0 0; }
+  &:first-of-type h2 { margin-top: 0; }
+  h2:last-child { margin-bottom: 0; }
+  p { margin: .5em 0 .5em 0; }
+  p:first-child { margin-top: 0; }
+  p:last-child { margin-bottom: 0; }
+  div { margin: 0; }
+  &.editing {
+    @media screen and (max-width: 999px) {
+      .content { width: 100%; }
+      flex-wrap: wrap-reverse;
+      &:not(:first-of-type) {
+        border-top: 1px solid white;
+        padding-top: 15px;
+      }
+      .content {
+        margin-top: 15px;
+      }
+    }
+    @media screen and (min-width: 999px) {
+      justify-content: space-between;
+      > .content:not(:only-child) {
+        width: calc(100% - 120px);
+      }
+    }
+  }
+  > .content:only-child {
+    width: 100%;
+  }
+}

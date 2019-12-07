@@ -1,0 +1,68 @@
+<section class="site-content-elements">
+  <% SiteContent.all.where(site: page).order(order_number: :asc).each do |site_content| %>
+    <% edit_path = current_user.present? ? edit_site_content_path(site_content) : nil %>
+    <article data-form-url="<%= edit_path %>" class="<%= site_content.type %> <%= 'editing' if current_user.present? %>">
+      <div class="content">
+        <% if site_content.type == 'text' %>
+          <%= site_content.text.html_safe %>
+        <% elsif site_content.type == 'image_gallery' %>
+          <% site_content.children.each do |image_content| %>
+            <% figure_edit_path = current_user.present? ? edit_site_content_path(image_content) : nil %>
+            <figure data-form-url="<%= figure_edit_path %>">
+              <%= image_tag image_content.image if image_content.image.attached? %>
+              <% if image_content.text&.strip.present? %>
+                <div class="black-layer"></div>
+              <% end %>
+              <h2 class="<%= 'short' if image_content.text&.strip&.count(' ') < 3 %>"><%= image_content.text %></h2>
+              <% if current_user.present? %>
+                <div class="buttons">
+                  <%= tag.i 'edit', class: 'edit-button material-icons' %>
+                  <%= link_to 'delete', site_content_path(image_content), method: :delete, class: 'material-icons delete-button', **are_you_sure_confirm %>
+                  <%= link_to 'keyboard_arrow_down', order_up_site_content_path(image_content), method: :patch, class: 'material-icons' %>
+                  <%= link_to 'keyboard_arrow_up', order_down_site_content_path(image_content), method: :patch, class: 'material-icons' %>
+                </div>
+              <% end %>
+            </figure>
+          <% end %>
+          <% if current_user.present? %>
+            <figure class="add">
+              <%= tag.span('+', class: 'plus-button button',
+                    data: { url: new_site_content_path(site: page, type: 'image', parent_id: site_content.id) }) %>
+            </figure>
+          <% end %>
+        <% end %>
+      </div>
+      <% if current_user.present? %>
+        <div class="edit-buttons">
+          <%= tag.i 'edit', class: 'edit-button material-icons' if site_content.editable? %>
+          <%= link_to 'delete', site_content_path(site_content), method: :delete, class: 'material-icons delete-button', **are_you_sure_confirm %>
+          <%= link_to 'keyboard_arrow_down', order_up_site_content_path(site_content), method: :patch, class: 'material-icons' %>
+          <%= link_to 'keyboard_arrow_up', order_down_site_content_path(site_content), method: :patch, class: 'material-icons' %>
+        </div>
+      <% end %>
+    </article>
+  <% end %>
+</section>
+
+<% if current_user.present? %>
+
+  <template id="new-site-content-template">
+    <article class="new-site-content">
+      <div class="add content">
+        <span class="plus-button button">+</span>
+      </div>
+    </article>
+  </template>
+  
+  <template id="site-content-type-selection-template">
+    <article class="site-content-type-selection">
+      <div class="add content">
+        <%= tag.span('image', class: 'image-button material-icons button',
+              data: { url: new_site_content_path(site: page, type: 'image', parent_type: 'image_gallery') }) %>
+        <%= tag.span('text_fields', class: 'text-button material-icons button',
+              data: { url: new_site_content_path(site: page, type: 'text') }) %>
+      </div>
+    </article>
+  </template>
+  
+<% end %>

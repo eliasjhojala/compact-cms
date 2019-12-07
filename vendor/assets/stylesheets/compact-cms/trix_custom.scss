@@ -1,0 +1,13 @@
+trix-toolbar {
+  button.heading-2::before, button.paragraph::before {
+    background-repeat: no-repeat;
+    background-position: center center;
+    background-size: 28px 18px;
+  }
+  button.heading-2::before {
+    background-image: image-url('trix/h2.svg');
+  }
+  button.paragraph::before {
+    background-image: image-url('trix/p.svg');
+  }
+}

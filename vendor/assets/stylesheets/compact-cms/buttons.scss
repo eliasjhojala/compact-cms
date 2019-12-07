@@ -1,0 +1,26 @@
+@import 'shared/library';
+
+.site-content-elements article {
+  .edit-buttons {
+    display: flex;
+    align-items: flex-start;
+    > * {
+      color: white;
+      text-decoration: none;
+      cursor: pointer;
+      @include general-button();
+      padding: 7px;
+      display: block;
+      margin: 0px 1px;
+      color: white;
+      text-decoration: none;
+      border-radius: 0px;
+    }
+    :first-child { border-radius: 50px 0px 0px 50px; padding-left: 10px;  }
+    :last-child  { border-radius: 0px 50px 50px 0px; padding-right: 10px; }
+    :only-child  { border-radius: 50px 50px 50px 50px; }
+    .delete-button {
+      @include general-delete-button();
+    }
+  }
+}

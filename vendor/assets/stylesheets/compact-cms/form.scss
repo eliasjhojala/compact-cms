@@ -1,0 +1,118 @@
+@import 'shared/library';
+
+@mixin site-content-form-button {
+  @include general-button();
+  border-radius: 100%;
+  padding: 7px;
+  font-size: 1.3em;
+}
+
+
+form.site-content-form {
+  z-index: 100;
+  background: $form-bg;
+  padding: 2px 2px 2px 6px;
+  border-radius: 20px;
+  margin-left: 1em;
+  display: inline-block;
+  color: $form-color;
+  font-size: 1rem;
+  trix-editor {
+    color: inherit;
+  }
+  input[type="file"] {
+    margin-right: -1.8em;
+    color: white;
+    font-family: Raleway;
+    font-weight: 400;
+  }
+  input[type="file"]::-webkit-file-upload-button {
+    border-radius: 20px;
+    padding: 7px;
+    font-family: Raleway;
+    color: black;
+    border: 1px solid grey;
+    &:hover {
+      cursor: pointer;
+    }
+  }
+  input[type="submit"], .delete-button {
+    font-family: Material Icons;
+    background: none;
+    margin: 0;
+    font-size: 1.3em;
+    color: white;
+    border: none;
+    vertical-align: middle;
+    @include site-content-form-button();
+  }
+  input[type="submit"]:not(.alone) {
+    margin-right: 1px;
+    border-radius: 20px 0px 0px 20px;
+    padding-left: 9px;
+    padding-right: 5px;
+    height: 35px;
+  }
+  .delete-button {
+                background: $red;
+    &:hover   { background: $red_hover;  }
+    &:active  { background: $red_active; }
+    margin-left: 1px;
+    border-radius: 0px 20px 20px 0px;
+    text-decoration: none;
+    padding-left: 5px;
+    padding-right: 9px;
+    height: 21px;
+  }
+  .buttons {
+    display: flex;
+    margin-top: 5px;
+    input[type="submit"] {
+      display: block;
+      flex: auto;
+    }
+              > * { border-radius: 0px;              }
+    :first-child { border-radius: 3px 0px 0px 10px;  }
+    :last-child  { border-radius: 0px 3px 10px 0px;  }
+    :only-child  { border-radius: 3px 3px 10px 10px; }
+    .close-button {
+      font-family: Material Icons;
+      display: block;
+      background: $lightRed;
+      color: white;
+      text-align: center;
+      display: flex;
+      align-items: center;
+      padding: 0px 10px 0px 14px;
+      margin-left: 2px;
+      border-radius: 0px 0px 10px 0px;
+      font-size: 22px;
+      &:hover {
+        cursor: pointer;
+      }
+    }
+  }
+  &.site-content-text-form {
+    padding: 12px;
+    background: $text-form-bg;
+    color: $text-form-color;
+    textarea {
+      height: 5em;
+      width: 20em;
+      @media screen and (max-width: 1499px) {
+        font-size: 1.5em;
+      }
+      font-size: 2.5em;
+      border-radius: 10px 10px 0px 0px;
+      border: 1px solid grey;
+      padding: 5px;
+      background: $text-form-input-bg;
+      color: white;
+    }
+  }
+}
+.site-content-delete-button {
+  font-family: Material Icons;
+  @include site-content-form-button();
+  margin-left: 1em;
+}
