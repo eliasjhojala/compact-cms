@@ -1550,7 +1550,7 @@ http://trix-editor.org/
                     var e;
                     t.config.blockAttributes = e = {
                         "default": {
-                            tagName: "div",
+                            tagName: "p",
                             parse: !1
                         },
                         quote: {
