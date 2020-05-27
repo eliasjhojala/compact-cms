@@ -1,5 +1,5 @@
-<section class="site-content-elements">
-  <% SiteContent.all.where(site: page).order(order_number: :asc).each do |site_content| %>
+<section class="site-content-elements <%= klass if defined?(klass) %>">
+  <% SiteContent.all.where(site: page, type: [:text, :image_gallery]).order(order_number: :asc).each do |site_content| %>
     <% edit_path = current_user.present? ? edit_site_content_path(site_content) : nil %>
     <article data-form-url="<%= edit_path %>" class="<%= site_content.type %> <%= 'editing' if current_user.present? %>">
       <div class="content">
