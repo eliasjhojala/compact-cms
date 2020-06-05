@@ -8,6 +8,8 @@ module SiteContent::FormHelper
       form_for record, html: { class: 'site-content-form' } do |f|
         concat f.file_field :image, multiple: false, direct_upload: false
         concat f.hidden_field :type
+        concat f.hidden_field :site
+        concat f.hidden_field :order_number
         concat f.submit 'save', class: attachment.attached? ? '' : 'alone'
         concat delete_button(record) if attachment.attached?
       end
