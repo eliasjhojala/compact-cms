@@ -2,7 +2,7 @@ class SiteContentsController < ApplicationController
   include DefaultActions
 
   def new
-    form model.new(params.permit(:site, :type, :parent_type, :parent_id))
+    form model.new(params.permit(:site, :type, :parent_type, :parent_id, :order_number))
   end
   
   def after_save r
@@ -10,7 +10,7 @@ class SiteContentsController < ApplicationController
   end
   
   def permitted_params
-    params.require(model.name.underscore.gsub('/', '_').to_sym).permit([:parent_id, :parent_type, permit_fields(model::Fields::TEXT_FORM_FIELDS), permit_fields(model::Fields::IMAGE_FORM_FIELDS)])
+    params.require(model.name.underscore.gsub('/', '_').to_sym).permit([:parent_id, :parent_type, :order_number, permit_fields(model::Fields::TEXT_FORM_FIELDS), permit_fields(model::Fields::IMAGE_FORM_FIELDS)])
   end
   
   def after_destroy r

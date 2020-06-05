@@ -11,7 +11,7 @@ class SiteContent < ApplicationRecord
   before_create :set_order_number
   
   def set_order_number
-    self.order_number = SiteContent.maximum(:order_number).to_i + 1
+    self.order_number ||= SiteContent.maximum(:order_number).to_i + 1
   end
   
   include SiteContent::Ordering
