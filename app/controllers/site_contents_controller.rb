@@ -28,6 +28,13 @@ class SiteContentsController < ApplicationController
     if CompactCms.languages.present? && I18n.locale.in?(CompactCms.languages)
       record.language = I18n.locale
     end
+    if record.type == 'text'
+      doc = Nokogiri::HTML(record.text)
+      doc.css('p').find_all.each do |p|
+        p.remove if p.content.blank?
+      end
+      record.text = doc.at('body').inner_html
+    end
     record.parent = parent if parent.present?
     authorize record
     if record.save
