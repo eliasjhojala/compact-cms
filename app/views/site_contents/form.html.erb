@@ -3,6 +3,7 @@
     <%= f.trix_editor :text %>
     <%= f.hidden_field :site %>
     <%= f.hidden_field :type %>
+    <%= f.hidden_field :order_number %>
     <div class="buttons">
       <%= f.submit 'save', class: 'alone' %>
       <%= delete_button(@site_content) unless @site_content.new_record? %>
@@ -16,6 +17,7 @@
     <%= f.hidden_field :type %>
     <%= f.hidden_field :parent_id %>
     <%= f.hidden_field :parent_type %>
+    <%= f.hidden_field :order_number %>
     <div class="buttons">
       <%= f.submit 'save', class: 'alone' %>
     </div>
