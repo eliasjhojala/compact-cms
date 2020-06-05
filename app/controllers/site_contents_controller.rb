@@ -25,6 +25,9 @@ class SiteContentsController < ApplicationController
       params_.delete(:site)
     end
     record.assign_attributes params_
+    if CompactCms.languages.present? && I18n.locale.in?(CompactCms.languages)
+      record.language = I18n.locale
+    end
     record.parent = parent if parent.present?
     authorize record
     if record.save
