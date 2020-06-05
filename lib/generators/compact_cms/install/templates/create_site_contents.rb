@@ -7,6 +7,7 @@ class CreateSiteContents < ActiveRecord::Migration[6.0]
       t.integer :site, index: true
       t.belongs_to :parent
       t.integer :order_number, index: true
+      t.integer :language, index: true
       
       t.index [:type, :site]
       t.index [:site, :type]

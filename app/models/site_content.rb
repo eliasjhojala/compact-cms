@@ -6,6 +6,7 @@ class SiteContent < ApplicationRecord
   enum type: [:nav_logo, :teaser_image, :teaser_text, :text, :image, :image_gallery]
   attr_accessor :parent_type
   enum site: CompactCms.sites
+  enum language: CompactCms.languages || [:fi]
   self.inheritance_column = :type_
   
   before_create :set_order_number

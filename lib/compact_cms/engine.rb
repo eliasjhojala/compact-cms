@@ -3,7 +3,7 @@ module CompactCms
   end
   
   class << self
-    mattr_accessor :sites
+    mattr_accessor :sites, :languages
 
     # add default values of more config vars here
   end
