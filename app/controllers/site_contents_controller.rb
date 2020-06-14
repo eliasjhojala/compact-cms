@@ -39,12 +39,10 @@ class SiteContentsController < ApplicationController
     authorize record
     if record.save
       result = after_save record
-      flash_success model
       unless result.present? && result.key?(:redirect) && !result[:redirect]
         redirect_to action: :index
       end
     else
-      flash_error model
       form record
     end
   end
