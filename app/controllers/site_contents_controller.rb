@@ -72,7 +72,7 @@ class SiteContentsController < ApplicationController
     record = SiteContent.find params[:id]
     authorize record
     record.change_order change
-    after_commit record
+    head :ok
   end
   
 end

@@ -18,8 +18,8 @@
                 <div class="buttons">
                   <%= tag.i 'edit', class: 'edit-button material-icons' %>
                   <%= link_to 'delete', site_content_path(image_content), method: :delete, class: 'material-icons delete-button', **are_you_sure_confirm %>
-                  <%= link_to 'keyboard_arrow_down', order_up_site_content_path(image_content), method: :patch, class: 'material-icons' %>
-                  <%= link_to 'keyboard_arrow_up', order_down_site_content_path(image_content), method: :patch, class: 'material-icons' %>
+                  <%= link_to 'keyboard_arrow_down', order_up_site_content_path(image_content), method: :patch, class: 'material-icons order-up', remote: true %>
+                  <%= link_to 'keyboard_arrow_up', order_down_site_content_path(image_content), method: :patch, class: 'material-icons order-down', remote: true %>
                 </div>
               <% end %>
             </figure>
@@ -36,8 +36,8 @@
         <div class="edit-buttons">
           <%= tag.i 'edit', class: 'edit-button material-icons' if site_content.editable? %>
           <%= link_to 'delete', site_content_path(site_content), method: :delete, class: 'material-icons delete-button', **are_you_sure_confirm %>
-          <%= link_to 'keyboard_arrow_down', order_up_site_content_path(site_content), method: :patch, class: 'material-icons' %>
-          <%= link_to 'keyboard_arrow_up', order_down_site_content_path(site_content), method: :patch, class: 'material-icons' %>
+          <%= link_to 'keyboard_arrow_down', order_up_site_content_path(site_content), method: :patch, class: 'material-icons order-up', remote: true %>
+          <%= link_to 'keyboard_arrow_up', order_down_site_content_path(site_content), method: :patch, class: 'material-icons order-down', remote: true %>
         </div>
       <% end %>
     </article>

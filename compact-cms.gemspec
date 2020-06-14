@@ -1,6 +1,6 @@
 Gem::Specification.new do |s|
   s.name = %q{compact-cms}
-  s.version = '0.0.13'
+  s.version = '0.0.14'
   s.date = %q{2020-05-26}
   s.summary = "compact content management system"
   s.files = [
