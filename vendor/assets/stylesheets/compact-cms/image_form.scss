@@ -1,3 +1,9 @@
 .site-content-image-form {
   width: 400px;
 }
+.site-content-form.site-content-image-form {
+  padding: 6px;
+  &, input[type="submit"], input[type="file"]::-webkit-file-upload-button {
+    border-radius: 4px;
+  }
+}
