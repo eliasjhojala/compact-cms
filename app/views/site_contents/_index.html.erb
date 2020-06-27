@@ -26,7 +26,7 @@
           <% end %>
           <% if current_user.present? %>
             <figure class="add">
-              <%= tag.span('+', class: 'plus-button button',
+              <%= tag.span('add', class: 'plus-button button',
                     data: { url: new_site_content_path(site: page, type: 'image', parent_id: site_content.id) }) %>
             </figure>
           <% end %>
@@ -49,7 +49,7 @@
   <template id="new-site-content-template">
     <article class="new-site-content">
       <div class="add content">
-        <span class="plus-button button">+</span>
+        <span class="plus-button button">add</span>
       </div>
     </article>
   </template>
