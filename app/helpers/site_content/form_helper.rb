@@ -20,6 +20,7 @@ module SiteContent::FormHelper
     form_for record, html: { class: 'site-content-form site-content-text-form' } do |f|
       concat f.text_area :text, data: options.slice(:editable)
       concat f.hidden_field :type
+      concat f.hidden_field :site
       concat (tag.div class: 'buttons' do
         concat f.submit 'save'
         concat tag.span 'close', class: 'close-button'
