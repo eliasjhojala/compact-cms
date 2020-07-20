@@ -21,6 +21,7 @@ module SiteContent::FormHelper
       concat f.text_area :text, data: options.slice(:editable)
       concat f.hidden_field :type
       concat f.hidden_field :site
+      concat f.hidden_field :order_number
       concat (tag.div class: 'buttons' do
         concat f.submit 'save'
         concat tag.span 'close', class: 'close-button'
